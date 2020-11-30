@@ -5,7 +5,6 @@ public class WordFrequencyGame {
 
     public static final String WHITE_SPACE_REGEX = "\\s+";
     public static final String NEW_LINE = "\n";
-    public static final String WHITE_SPACE = " ";
 
     public String getResult(String sentence) throws CalculateErrorException {
         try {

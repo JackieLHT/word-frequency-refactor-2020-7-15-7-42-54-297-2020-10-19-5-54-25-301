@@ -25,12 +25,12 @@ public class WordFrequencyGame {
     }
 
     private String buildWordFrequencyResult(List<Input> wordFrequencyList) {
-        StringJoiner joiner = new StringJoiner(NEW_LINE);
+        StringJoiner wordFrequencyResult = new StringJoiner(NEW_LINE);
         for (Input wordFrequency : wordFrequencyList) {
-            String wordFrequencyLine = wordFrequency.getValue() + WHITE_SPACE + wordFrequency.getWordCount();
-            joiner.add(wordFrequencyLine);
+            String wordFrequencyLine = String.format("%s %d",wordFrequency.getValue(),wordFrequency.getWordCount());
+            wordFrequencyResult.add(wordFrequencyLine);
         }
-        return joiner.toString();
+        return wordFrequencyResult.toString();
     }
 
     private List<Input> calculateWordFrequency(String sentence) {

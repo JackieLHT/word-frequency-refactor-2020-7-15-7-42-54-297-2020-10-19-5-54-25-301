@@ -10,9 +10,9 @@ public class WordFrequencyGame {
 
     public String getResult(String sentence) {
         try {
-            List<Input> wordFrequencyList = calculateWordFrequency(sentence);
+            List<WordFrequency> wordFrequencyList = calculateWordFrequency(sentence);
 
-            wordFrequencyList.sort((word1, word2) -> word2.getWordCount() - word1.getWordCount());
+            wordFrequencyList.sort((word1, word2) -> word2.getCount() - word1.getCount());
 
             return buildWordFrequencyResult(wordFrequencyList);
         } catch (Exception exception) {
@@ -20,21 +20,21 @@ public class WordFrequencyGame {
         }
     }
 
-    private String buildWordFrequencyResult(List<Input> wordFrequencyList) {
+    private String buildWordFrequencyResult(List<WordFrequency> wordFrequencyList) {
         StringJoiner wordFrequencyResult = new StringJoiner(NEW_LINE);
-        for (Input wordFrequency : wordFrequencyList) {
-            String wordFrequencyLine = String.format("%s %d", wordFrequency.getValue(), wordFrequency.getWordCount());
+        for (WordFrequency wordFrequency : wordFrequencyList) {
+            String wordFrequencyLine = String.format("%s %d", wordFrequency.getWord(), wordFrequency.getCount());
             wordFrequencyResult.add(wordFrequencyLine);
         }
         return wordFrequencyResult.toString();
     }
 
-    private List<Input> calculateWordFrequency(String sentence) {
+    private List<WordFrequency> calculateWordFrequency(String sentence) {
         List<String> words = Arrays.asList(sentence.split(WHITE_SPACE_REGEX));
 
         HashSet<String> distinctWords = new HashSet<>(words);
 
-        return distinctWords.stream().map(word -> new Input(word, Collections.frequency(words, word)))
+        return distinctWords.stream().map(word -> new WordFrequency(word, Collections.frequency(words, word)))
                 .collect((Collectors.toList()));
     }
 }

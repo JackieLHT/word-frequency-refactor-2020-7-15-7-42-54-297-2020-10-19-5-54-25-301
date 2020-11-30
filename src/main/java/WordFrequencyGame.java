@@ -30,12 +30,11 @@ public class WordFrequencyGame {
                 Input input = new Input(entry.getKey(), entry.getValue().size());
                 wordFrequencyList.add(input);
             }
-            inputList = wordFrequencyList;
 
-            inputList.sort((word1, word2) -> word2.getWordCount() - word1.getWordCount());
+            wordFrequencyList.sort((word1, word2) -> word2.getWordCount() - word1.getWordCount());
 
             StringJoiner joiner = new StringJoiner(NEW_LINE);
-            for (Input wordFrequency : inputList) {
+            for (Input wordFrequency : wordFrequencyList) {
                 String wordFrequencyLine = wordFrequency.getValue() + WHITE_SPACE + wordFrequency.getWordCount();
                 joiner.add(wordFrequencyLine);
             }

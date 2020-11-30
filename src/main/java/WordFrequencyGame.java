@@ -17,19 +17,13 @@ public class WordFrequencyGame {
             String[] words = sentence.split(WHITE_SPACE_REGEX);
 
             List<Input> inputList = new ArrayList<>();
-            for (String word : words) {
-                Input input = new Input(word, 1);
-                inputList.add(input);
-            }
+            for (String word : words) { inputList.add(new Input(word, 1)); }
 
             //get the map for the next step of sizing the same word
             Map<String, List<Input>> wordFrequencyMap = getListMap(inputList);
 
             List<Input> wordFrequencyList = new ArrayList<>();
-            for (Map.Entry<String, List<Input>> entry : wordFrequencyMap.entrySet()) {
-                Input input = new Input(entry.getKey(), entry.getValue().size());
-                wordFrequencyList.add(input);
-            }
+            for (Map.Entry<String, List<Input>> entry : wordFrequencyMap.entrySet()) { wordFrequencyList.add(new Input(entry.getKey(), entry.getValue().size())); }
 
             wordFrequencyList.sort((word1, word2) -> word2.getWordCount() - word1.getWordCount());
 
